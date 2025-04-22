@@ -7,7 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import axios from 'axios';
 
 // Set base URL for API requests
-axios.defaults.baseURL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+axios.defaults.baseURL = process.env.REACT_APP_API_URL || 'https://ticket-423s.onrender.com';
 
 // Add auth token to requests if it exists in localStorage
 const token = localStorage.getItem('token');
