@@ -15,7 +15,11 @@ const customerRoutes = require('./routes/customers');
 const app = express();
 
 
-app.use(cors());
+app.use(cors({
+  origin: 'https://ticket-lime-gamma.vercel.app', // allow only your frontend
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
