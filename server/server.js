@@ -15,10 +15,17 @@ const customerRoutes = require('./routes/customers');
 const app = express();
 
 
+const allowedOrigins = ["https://ticket-lime-gamma.vercel.app"];
+
 app.use(cors({
-  origin: 'https://ticket-lime-gamma.vercel.app', // allow only your frontend
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials: true
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true, // If you're using cookies or authorization headers
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
